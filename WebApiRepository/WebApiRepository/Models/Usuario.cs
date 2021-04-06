@@ -34,5 +34,10 @@ namespace WebApiRepository.Models
 
         [Column("WAR_NroCelular")]
         public String NroCelular { get; set; }
+
+        [Column("WAR_IdVoto")]
+        public long IdVoto { get; set; }
+
+        public virtual Voto Voto { get; set; }
     }
 }

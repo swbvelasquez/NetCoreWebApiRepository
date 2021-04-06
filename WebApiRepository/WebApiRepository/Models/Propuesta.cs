@@ -16,5 +16,10 @@ namespace WebApiRepository.Models
 
         [Column("WAR_Descripcion")]
         public String Descripcion { get; set; }
+
+        [Column("WAR_IdCandidato")]
+        public long IdCandidato { get; set; }
+
+        public virtual Candidato Candidato { get; set; }
     }
 }

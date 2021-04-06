@@ -25,5 +25,9 @@ namespace WebApiRepository.Models
 
         [Column("WAR_Edad")]
         public int Edad { get; set; }
+
+        public virtual IEnumerable<Propuesta> Propuestas { get; set; }
+
+        public virtual IEnumerable<Voto> Votos { get; set; }
     }
 }
