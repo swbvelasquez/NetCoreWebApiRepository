@@ -6,16 +6,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace WebApiRepository.Models
-{   
-    [Table("WAR_Usuario")]
-    public class Usuario
+{
+    [Table("WAR_Candidato")]
+    public class Candidato
     {
         [Key]
-        [Column("WAR_NroDNI")]
-        public long NroDNI { get; set; }
-
-        [Column("WAR_Clave")]
-        public String Clave { get; set; }
+        [Column("WAR_IdCandidato")]
+        public long IdCandidato { get; set; }
 
         [Column("WAR_Nombre")]
         public String Nombre { get; set; }
@@ -28,11 +25,5 @@ namespace WebApiRepository.Models
 
         [Column("WAR_Edad")]
         public int Edad { get; set; }
-
-        [Column("WAR_CorreoElectronico")]
-        public String CorreoElectronico { get; set; }
-
-        [Column("WAR_NroCelular")]
-        public String NroCelular { get; set; }
     }
 }
