@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -10,6 +11,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApiRepository.Data;
+using WebApiRepository.Interfaces;
+using WebApiRepository.Repositories;
 
 namespace WebApiRepository
 {
@@ -26,6 +30,8 @@ namespace WebApiRepository
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddDbContext<UsuarioContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CadenaConexion"))); //Para la cadena de conexion
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>(); //Para la inyeccion del contexto en el repositorio y retirarla del controller
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
