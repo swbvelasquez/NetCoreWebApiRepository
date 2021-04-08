@@ -14,6 +14,7 @@ namespace WebApiRepository.Models
         [Column("WAR_IdUsuario")]
         public long IdUsuario { get; set; }
 
+        [Required]
         [Column("WAR_Clave")]
         public String Clave { get; set; }
 

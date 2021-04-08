@@ -14,9 +14,11 @@ namespace WebApiRepository.Models
         [Column("WAR_IdVoto")]
         public long IdVoto { get; set; }
 
+        [Required]
         [Column("WAR_IdCandidato")]
         public long IdCandidato { get; set; }
 
+        [Required]
         [Column("WAR_IdUsuario")]
         public long IdUsuario { get; set; }
 

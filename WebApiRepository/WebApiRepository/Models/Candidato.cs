@@ -14,12 +14,15 @@ namespace WebApiRepository.Models
         [Column("WAR_IdCandidato")]
         public long IdCandidato { get; set; }
 
+        [Required]
         [Column("WAR_Nombre")]
         public String Nombre { get; set; }
 
+        [Required]
         [Column("WAR_ApellidoPaterno")]
         public String ApellidoPaterno { get; set; }
 
+        [Required]
         [Column("WAR_ApellidoMaterno")]
         public String ApellidoMaterno { get; set; }
 
