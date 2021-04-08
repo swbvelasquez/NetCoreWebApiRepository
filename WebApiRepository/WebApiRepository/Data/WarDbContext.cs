@@ -7,13 +7,16 @@ using WebApiRepository.Models;
 
 namespace WebApiRepository.Data
 {
-    public class UsuarioContext:DbContext
+    public class WarDbContext:DbContext
     {
-        public UsuarioContext(DbContextOptions<UsuarioContext> options) : base(options)
+        public WarDbContext(DbContextOptions<WarDbContext> options) : base(options)
         { 
         
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Candidato> Candidatos { get; set; }
+        public DbSet<Propuesta> Propuestas { get; set; }
+        public DbSet<Voto> Votos { get; set; }
     }
 }

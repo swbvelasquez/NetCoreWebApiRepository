@@ -11,8 +11,8 @@ namespace WebApiRepository.Models
     public class Usuario
     {
         [Key]
-        [Column("WAR_NroDNI")]
-        public long NroDNI { get; set; }
+        [Column("WAR_IdUsuario")]
+        public long IdUsuario { get; set; }
 
         [Column("WAR_Clave")]
         public String Clave { get; set; }
@@ -38,6 +38,7 @@ namespace WebApiRepository.Models
         [Column("WAR_IdVoto")]
         public long IdVoto { get; set; }
 
+        [ForeignKey("WAR_IdVoto")]
         public virtual Voto Voto { get; set; }
     }
 }

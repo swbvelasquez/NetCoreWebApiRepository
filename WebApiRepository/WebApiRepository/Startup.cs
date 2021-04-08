@@ -30,7 +30,7 @@ namespace WebApiRepository
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<UsuarioContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CadenaConexion"))); //Para la cadena de conexion
+            services.AddDbContext<WarDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("CadenaConexion"))); //Para la cadena de conexion
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>(); //Para la inyeccion del contexto en el repositorio y retirarla del controller
         }
 

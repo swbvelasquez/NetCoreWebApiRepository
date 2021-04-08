@@ -11,35 +11,35 @@ namespace WebApiRepository.Repositories
 {
     public class UsuarioRepositorio : IUsuarioRepositorio
     {
-        private readonly UsuarioContext context;
+        private readonly WarDbContext context;
 
-        public UsuarioRepositorio(UsuarioContext context)
+        public UsuarioRepositorio(WarDbContext context)
         {
             this.context = context;
         }
 
-        public async Task<IEnumerable<Usuario>> listarEntidades()
+        public async Task<IEnumerable<Usuario>> listarTodos()
         {
             return await context.Usuarios.ToListAsync();
         }
 
-        public async Task<Usuario> obtenerEntidadPorId(long id)
+        public async Task<Usuario> obtenerPorId(long id)
         {
             return await context.Usuarios.FindAsync(id);
         }
 
-        public void agregarEntidad(Usuario entity)
+        public void agregar(Usuario entity)
         {
             context.Usuarios.Add(entity);
         }
-        public void actualizarEntidad(Usuario entity)
+        public void actualizar(Usuario entity)
         {
             context.Entry(entity).State = EntityState.Modified;
         }
 
-        public async void eliminarEntidad(long id)
+        public async void eliminar(long id)
         {
-            Usuario entity = await obtenerEntidadPorId(id);
+            Usuario entity = await obtenerPorId(id);
             context.Usuarios.Remove(entity);
         }
 

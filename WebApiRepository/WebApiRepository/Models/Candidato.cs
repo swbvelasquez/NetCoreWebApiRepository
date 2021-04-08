@@ -26,8 +26,10 @@ namespace WebApiRepository.Models
         [Column("WAR_Edad")]
         public int Edad { get; set; }
 
-        public virtual IEnumerable<Propuesta> Propuestas { get; set; }
+        [ForeignKey("WAR_IdPropuesta")]
+        public virtual ICollection<Propuesta> Propuestas { get; set; }
 
-        public virtual IEnumerable<Voto> Votos { get; set; }
+        [ForeignKey("WAR_IdVoto")]
+        public virtual ICollection<Voto> Votos { get; set; }
     }
 }

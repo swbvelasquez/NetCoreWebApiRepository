@@ -8,11 +8,11 @@ namespace WebApiRepository.Interfaces
 {
     public interface IUsuarioRepositorio
     {
-        Task<IEnumerable<Usuario>> listarEntidades();
-        Task<Usuario> obtenerEntidadPorId(long id);
-        void agregarEntidad(Usuario entity);
-        void actualizarEntidad(Usuario entity);
-        void eliminarEntidad(long id);
+        Task<IEnumerable<Usuario>> listarTodos();
+        Task<Usuario> obtenerPorId(long id);
+        void agregar(Usuario entity);
+        void actualizar(Usuario entity);
+        void eliminar(long id);
         Task<int> guardarCambios();
         void liberarRecursos();
     }
