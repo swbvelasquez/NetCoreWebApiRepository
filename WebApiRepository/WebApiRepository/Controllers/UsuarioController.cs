@@ -27,7 +27,7 @@ namespace WebApiRepository.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Usuario>> obtenerPorId(int id)
+        public async Task<ActionResult<Usuario>> obtenerPorId(long id)
         {
             Usuario usuario = await repositorio.obtenerPorId(id);
 
@@ -38,6 +38,74 @@ namespace WebApiRepository.Controllers
 
             return Ok(usuario);
         }
-            
+
+        [HttpPost]
+        public async Task<ActionResult<Usuario>> agregar(Usuario usuario)
+        {
+            int resultado = 0;
+            Usuario usuarioExistente = await repositorio.obtenerPorId(usuario.IdUsuario);
+
+            if (usuarioExistente != null)
+            {
+                return Conflict();
+            }
+
+
+            repositorio.agregar(usuario);
+            resultado = await repositorio.guardarCambios();
+
+            if (resultado <= 0)
+            {
+                return Conflict();
+            }
+
+            return CreatedAtAction(nameof(obtenerPorId), new { id  = usuario.IdUsuario}, usuario);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> actualizar(long id, Usuario usuario)
+        {
+            int resultado = 0;
+            Usuario usuarioExistente = await repositorio.obtenerPorId(usuario.IdUsuario);
+
+            if (usuarioExistente == null)
+            {
+                return NotFound();
+            }
+
+
+            repositorio.actualizar(usuario);
+            resultado = await repositorio.guardarCambios();
+
+            if (resultado <= 0)
+            {
+                return Conflict();
+            }
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> eliminar(long id)
+        {
+            int resultado = 0;
+            Usuario usuarioExistente = await repositorio.obtenerPorId(id);
+
+            if (usuarioExistente == null)
+            {
+                return NotFound();
+            }
+
+
+            repositorio.eliminar(id);
+            resultado = await repositorio.guardarCambios();
+
+            if (resultado <= 0)
+            {
+                return Conflict();
+            }
+
+            return NoContent();
+        }
     }
 }

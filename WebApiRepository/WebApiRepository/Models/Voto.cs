@@ -22,10 +22,10 @@ namespace WebApiRepository.Models
         [Column("WAR_IdUsuario")]
         public long IdUsuario { get; set; }
 
-        [ForeignKey("WAR_IdUsuario")]
+        [ForeignKey("IdUsuario")]
         public virtual Usuario Usuario { get; set; }
 
-        [ForeignKey("WAR_IdCandidato")]
+        [ForeignKey("IdCandidato")]
         public virtual Candidato Candidato { get; set; }
     }
 }

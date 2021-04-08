@@ -20,7 +20,7 @@ namespace WebApiRepository.Models
         [Column("WAR_IdCandidato")]
         public long IdCandidato { get; set; }
 
-        [ForeignKey("WAR_IdCandidato")]
+        [ForeignKey("IdCandidato")]
         public virtual Candidato Candidato { get; set; }
     }
 }

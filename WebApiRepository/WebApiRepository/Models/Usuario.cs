@@ -14,7 +14,8 @@ namespace WebApiRepository.Models
         [Column("WAR_IdUsuario")]
         public long IdUsuario { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="El campo Clave es obligatorio")]
+        [MinLength(4, ErrorMessage = "El campo Clave debe ser de 4 carácteres")]
         [Column("WAR_Clave")]
         public String Clave { get; set; }
 
@@ -39,7 +40,7 @@ namespace WebApiRepository.Models
         [Column("WAR_IdVoto")]
         public long IdVoto { get; set; }
 
-        [ForeignKey("WAR_IdVoto")]
+        [ForeignKey("IdVoto")]
         public virtual Voto Voto { get; set; }
     }
 }
