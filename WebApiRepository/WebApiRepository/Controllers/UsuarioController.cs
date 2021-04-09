@@ -68,6 +68,11 @@ namespace WebApiRepository.Controllers
             int resultado = 0;
             Usuario usuarioExistente = await repositorio.obtenerPorId(usuario.IdUsuario);
 
+            if(id != usuario.IdUsuario)
+            {
+                return BadRequest();
+            }
+
             if (usuarioExistente == null)
             {
                 return NotFound();
@@ -106,6 +111,34 @@ namespace WebApiRepository.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpPatch("ActualizarDatosSecundarios/{id}")]
+        public async Task<IActionResult> actualizarDatosSecundarios(long id, [FromQuery] String correo, [FromQuery] String nroCelular)
+        {
+            int resultado = 0;
+            Usuario usuarioExistente = await repositorio.obtenerPorId(id);
+
+            if (usuarioExistente == null)
+            {
+                return NotFound();
+            }
+
+            if (id != usuarioExistente.IdUsuario)
+            {
+                return BadRequest();
+            }
+
+            usuarioExistente.CorreoElectronico = correo;
+            usuarioExistente.NroCelular = nroCelular;
+            resultado = await repositorio.guardarCambios();
+
+            if (resultado <= 0)
+            {
+                return Conflict();
+            }
+
+            return Ok(usuarioExistente);
         }
     }
 }
